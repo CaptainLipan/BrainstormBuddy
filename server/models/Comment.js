@@ -5,11 +5,11 @@ const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 
 const commentSchema = new Schema({
-    text: { type: String, required: true },
-    isDeleted: { type: Boolean, default: false },
-    createdAt: { type: Date, default: Date.now },
-    _creator: { type: Schema.ObjectId, ref: 'User', required: true },
-    _post: { type: Schema.ObjectId, ref: 'Post', required: true }
+    text: {type: String, required: true},
+    isDeleted: {type: Boolean, default: false},
+    createdAt: {type: Date, default: Date.now},
+    _creator: {type: Schema.ObjectId, ref: 'User', required: true},
+    _post: {type: Schema.ObjectId, ref: 'Post', required: true}
 });
 
 const autoPopulateCreator = function(next) {
