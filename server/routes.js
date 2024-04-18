@@ -5,6 +5,7 @@ import postController from './controllers/postController';
 import commentController from "./controllers/commentController";
 import voteController from "./controllers/voteController";
 
+
 const routes = express();
 
 // Basic routes
@@ -20,17 +21,18 @@ routes.get('/posts', postController.getAll);
 // Comment routes
 routes.post('/comment', commentController.post);
 
-// Vote routes
-routes.post('/vote/upVotePost', voteController.upVotePost);
-routes.post('/vote/downVotePost', voteController.downVotePost);
-routes.post('/vote/upVoteComment', voteController.upVoteComment);
-routes.post('/vote/downVoteComment', voteController.downVoteComment);
+// Routes for handling votes on posts
+routes.post('/post/upvote', voteController.upVotePost);
+routes.post('/post/downvote', voteController.downVotePost);
+routes.post('/post/undovote', voteController.undoVotePost);
 
-//undoVote routes
-routes.post('/vote/undoUpVotePost', voteController.undoUpVotePost);
-routes.post('/vote/undoDownVotePost', voteController.undoDownVotePost);
-routes.post('/vote/undoUpVoteComment', voteController.undoUpVoteComment);
-routes.post('/vote/undoDownVoteComment', voteController.undoDownVoteComment);
+// Routes for handling votes on comments
+routes.post('/comment/upvote', voteController.upVoteComment);
+routes.post('/comment/downvote', voteController.downVoteComment);
+routes.post('/comment/undovote', voteController.undoVoteComment);
+
+
+
 
 // Export routes explicitly
 module.exports = routes;
